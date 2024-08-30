@@ -1,0 +1,45 @@
+clear;clc
+file = file_path+"co23D_Emon_CNRM-ESM2-1_esm-hist_r1i1p1f2_gr_185001-201412.nc";
+data=hnc_getall(file);
+CO2_3D = squeeze(data.co23D.data(:,1,:,:));
+time = data.time.data;
+lat = data.lat.data;
+%%
+is_1850=time<365;
+CO2_3D_year = squeeze(CO2_3D(is_1850,:,:));
+CO2_3D_year = squeeze(sum(CO2_3D_year,1));
+CO2_3D_year_lon = sum(CO2_3D_year,2);
+CO2_3D_year_lon = CO2_3D_year_lon*1e6/12;
+plot(lat,CO2_3D_year_lon-CO2_3D_year_lon(1),'LineWidth',2,'DisplayName','1850')
+hold on
+
+days_1900 = datenum('1900-01-01 00:00:00', 'yyyy-mm-dd HH:MM:SS')-datenum('1850-01-01 00:00:00', 'yyyy-mm-dd HH:MM:SS');
+is_1900 = time>days_1900&time<days_1900+365;
+CO2_3D_year = squeeze(CO2_3D(is_1900,:,:));
+CO2_3D_year = squeeze(sum(CO2_3D_year,1));
+CO2_3D_year_lon = sum(CO2_3D_year,2);
+CO2_3D_year_lon = CO2_3D_year_lon*1e6/12;
+plot(lat,CO2_3D_year_lon-CO2_3D_year_lon(1),'LineWidth',2,'DisplayName','1900')
+hold on
+
+
+days_1956 = datenum('1956-01-01 00:00:00', 'yyyy-mm-dd HH:MM:SS')-datenum('1850-01-01 00:00:00', 'yyyy-mm-dd HH:MM:SS');
+is_1956 = time>days_1956&time<days_1956+366;
+CO2_3D_year = squeeze(CO2_3D(is_1956,:,:));
+CO2_3D_year = squeeze(sum(CO2_3D_year,1));
+CO2_3D_year_lon = sum(CO2_3D_year,2);
+CO2_3D_year_lon = CO2_3D_year_lon*1e6/12;
+plot(lat,CO2_3D_year_lon-CO2_3D_year_lon(1),'LineWidth',2,'DisplayName','1956')
+hold on
+
+
+
+days_2003 = datenum('2003-01-01 00:00:00', 'yyyy-mm-dd HH:MM:SS')-datenum('1850-01-01 00:00:00', 'yyyy-mm-dd HH:MM:SS');
+is_2003 = time>days_2003&time<days_2003+365;
+CO2_3D_year = squeeze(CO2_3D(is_2003,:,:));
+CO2_3D_year = squeeze(sum(CO2_3D_year,1));
+CO2_3D_year_lon = sum(CO2_3D_year,2);
+CO2_3D_year_lon = CO2_3D_year_lon*1e6/12;
+plot(lat,CO2_3D_year_lon-CO2_3D_year_lon(1),'LineWidth',2,'DisplayName','2003')
+
+legend

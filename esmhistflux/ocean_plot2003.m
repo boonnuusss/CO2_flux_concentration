@@ -1,6 +1,5 @@
 clear;clc
 %% define the path of the data
-filepath = "D:\summer project\data\data2\";
 ocean_filename = [...
 "fgco2_Omon_CNRM-ESM2-1_esm-hist_r1i1p1f2_gn_185001-201412.nc";
 "fgco2_Omon_GFDL-ESM4_esm-hist_r1i1p1f1_gr_199001-200912.nc";

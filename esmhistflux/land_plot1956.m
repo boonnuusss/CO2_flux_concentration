@@ -1,6 +1,5 @@
 clear;clc
 %% define the path of the data
-filepath = "D:\summer project\data\data2\";
 land_filename = [...
 "netAtmosLandCO2Flux_Emon_CNRM-ESM2-1_esm-hist_r1i1p1f2_gr_185001-201412.nc";
 "netAtmosLandCO2Flux_Emon_MPI-ESM1-2-LR_esm-hist_r1i1p1f1_gn_195001-196912.nc";

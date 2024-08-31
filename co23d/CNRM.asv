@@ -1,9 +1,9 @@
 clear;clc
+file_path = "D:\work_for_pcd\Chendi\";
 data=hnc_getall(file_path+"co23D_Emon_CNRM-ESM2-1_esm-hist_r1i1p1f2_gr_185001-201412.nc");
 CO2_3D = squeeze(data.co23D.data(:,1,:,:));
 time = data.time.data;
 lat = data.lat.data;
-lev = data.lev;
 %%
 is_1850=time<365;
 CO2_3D_year = squeeze(CO2_3D(is_1850,:,:));

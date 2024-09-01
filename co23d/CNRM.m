@@ -4,12 +4,13 @@ CO2_3D = squeeze(data.co23D.data(:,1,:,:));
 time = data.time.data;
 lat = data.lat.data;
 lev = data.lev;
+lon = data.lon.data;
 %%
 is_1850=time<365;
 CO2_3D_year = squeeze(CO2_3D(is_1850,:,:));
 CO2_3D_year = squeeze(sum(CO2_3D_year,1));
 CO2_3D_year_lon = sum(CO2_3D_year,2);
-CO2_3D_year_lon = CO2_3D_year_lon*1.403*(1e3)/12;
+CO2_3D_year_lon = CO2_3D_year_lon/length(lon)*29/44*1e6/12;
 plot(lat,CO2_3D_year_lon-CO2_3D_year_lon(1),'LineWidth',2,'DisplayName','1850')
 hold on
 
@@ -18,7 +19,7 @@ is_1900 = time>days_1900&time<days_1900+365;
 CO2_3D_year = squeeze(CO2_3D(is_1900,:,:));
 CO2_3D_year = squeeze(sum(CO2_3D_year,1));
 CO2_3D_year_lon = sum(CO2_3D_year,2);
-CO2_3D_year_lon = CO2_3D_year_lon*1.403*(1e3)/12;
+CO2_3D_year_lon = CO2_3D_year_lon/length(lon)*29/44*1e6/12;
 plot(lat,CO2_3D_year_lon-CO2_3D_year_lon(1),'LineWidth',2,'DisplayName','1900')
 hold on
 
@@ -28,7 +29,7 @@ is_1956 = time>days_1956&time<days_1956+366;
 CO2_3D_year = squeeze(CO2_3D(is_1956,:,:));
 CO2_3D_year = squeeze(sum(CO2_3D_year,1));
 CO2_3D_year_lon = sum(CO2_3D_year,2);
-CO2_3D_year_lon = CO2_3D_year_lon*1.403*(1e3)/12;
+CO2_3D_year_lon = CO2_3D_year_lon/length(lon)*29/44*1e6/12;
 plot(lat,CO2_3D_year_lon-CO2_3D_year_lon(1),'LineWidth',2,'DisplayName','1956')
 hold on
 
@@ -39,7 +40,7 @@ is_2003 = time>days_2003&time<days_2003+365;
 CO2_3D_year = squeeze(CO2_3D(is_2003,:,:));
 CO2_3D_year = squeeze(sum(CO2_3D_year,1));
 CO2_3D_year_lon = sum(CO2_3D_year,2);
-CO2_3D_year_lon = CO2_3D_year_lon*1.403*(1e3)/12;
+CO2_3D_year_lon = CO2_3D_year_lon/length(lon)*29/44*1e6/12;
 plot(lat,CO2_3D_year_lon-CO2_3D_year_lon(1),'LineWidth',2,'DisplayName','2003')
 
 legend
